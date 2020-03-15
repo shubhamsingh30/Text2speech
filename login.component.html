@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8">
+        <div class="card text-blank">
+            <div class="card-body">
+                <div class="card-title text-center"><h5>Log in using your email</h5></div>
+                <div class="card-text">
+
+                    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="enter email"
+                            name="email" [formControl]="myForm.controls['email']" >
+                        </div>
+
+                        <div class="alert alert-danger" *ngIf="myForm.controls['email'].touched &&
+                        myForm.controls['email'].invalid">
+                            A valid email is required
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="enter password"
+                            name="password" [formControl]="myForm.controls['password']">
+                        </div>
+
+                        <div class="alert alert-danger"
+                        *ngIf="myForm.controls['password'].touched && 
+                                myForm.controls['password'].invalid">
+                        password  is required
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-block btn-warning round"
+                            [disabled]="myForm.invalid">
+                                submit
+                            </button>
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-success" *ngIf="message.length > 0 ">
+            you have been successfully logged in
+        </div>
+        <div class="alert alert-danger" *ngIf="userError">
+            {{ userError.message }}
+        </div>
+    </div>
+</div>
